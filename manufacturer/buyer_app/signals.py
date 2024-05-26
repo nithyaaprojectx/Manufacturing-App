@@ -10,4 +10,4 @@ def create_buyer_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_buyer_profile(sender, instance, **kwargs):
-    instance.buyer_profile.save()
+    instance.buyer.save()

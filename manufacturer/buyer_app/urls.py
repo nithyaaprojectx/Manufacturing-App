@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='buyer/login.html'), name='login'),
+    path('signup/', auth_views.LoginView.as_view(template_name='buyer/signup.html'), name='signup'),
     path('upload/', views.upload_file, name='upload_file'),
     path('success/', views.success, name='success'),
     path('upload_step_file/', views.upload_step_file, name='upload_step_file'),
