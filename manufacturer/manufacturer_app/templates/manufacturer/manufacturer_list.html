@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manufacturers</title>
+</head>
+<body>
+    <h1>Manufacturers</h1>
+    <ul>
+        {% for manufacturer in manufacturers %}
+            <li>{{ manufacturer.name }} - {{ manufacturer.expertise }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'manufacturer_create' %}">Add New Manufacturer</a>
+</body>
+</html>

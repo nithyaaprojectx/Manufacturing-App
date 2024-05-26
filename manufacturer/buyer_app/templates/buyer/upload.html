@@ -1,0 +1,46 @@
+{% extends 'buyer/base.html' %}
+
+{% block title %}Upload File{% endblock %}
+
+{% block content %}
+<h2>Upload File</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var methodField = document.querySelector('[name="manufacturing_method"]');
+    var materialField = document.querySelector('.field-material');
+    var nozzleDiaField = document.querySelector('.field-nozzle_dia');
+    var resolutionField = document.querySelector('.field-resolution');
+    var infillField = document.querySelector('.field-infill');
+    var layersField = document.querySelector('.field-layers');
+
+    function toggleFields() {
+        var method = methodField.value;
+        materialField.style.display = 'none';
+        nozzleDiaField.style.display = 'none';
+        resolutionField.style.display = 'none';
+        infillField.style.display = 'none';
+        layersField.style.display = 'none';
+
+        if (method === '3d_printing') {
+            materialField.style.display = '';
+            nozzleDiaField.style.display = '';
+            resolutionField.style.display = '';
+            infillField.style.display = '';
+        } else if (method === 'cnc_machining') {
+            materialField.style.display = '';
+        } else if (method === 'pcb_manufacturing') {
+            layersField.style.display = '';
+        }
+    }
+
+    methodField.addEventListener('change', toggleFields);
+    toggleFields();  // Initial call to set correct fields on page load
+});
+</script>
+{% endblock %}
